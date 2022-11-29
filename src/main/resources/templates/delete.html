@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除</title>
+</head>
+<body>
+    <div id="urlbtn">
+        <a href="/home"><button>首页</button></a>
+        <a href="/update"><button>更新</button></a>
+        <a href="/select"><button>查询</button></a>
+        <a href="/add"><button>添加</button></a>
+    </div>
+    <form action="/delete1" method="post">
+        *姓名：<input type="text" id="name" name="name"><br>
+        *类型：<input type="text" id="type" name="type"><br>
+        <span id="msg" style="color: red" th:utext="${SelectResult}">删除结果</span><br>
+        <!--        <h3 th:utext="${SelectResult}">查询结果</h3>-->
+        <input type="submit" id="delete" value="删除">
+        <input type="reset" value="重置"><br>
+    </form>
+</body>
+</html>

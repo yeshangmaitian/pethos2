@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Please input your login name and password</title>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css"/>
+</head>
+<body>
+  <form action="/login" method="post" role="form">
+    user: <input type="text" id="naem" name="name"></br>
+    password: <input type="password" id="password" name="password"></br>
+    <span th:utext="${msg}" id="msg">登录信息</span></br>
+    <input type="submit" id="login" value="login">
+    <input type="reset" value="重置">
+  </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="urlbtn">
+        <a href="/home"><button>首页</button></a>
+        <a href="/add"><button>添加</button></a>
+        <a href="/update"><button>更新</button></a>
+        <a href="/delete"><button>删除</button></a>
+    </div>
+    <div class="select">
+        <button id="selectAll">查询所有信息</button>
+        <div id="info1"></div>
+        <form action="/select1" method="post">
+            姓名：<input type="text" id="pname" name="name"><br>
+            宠物类型：<input type="text" id="ptype" name="type"><br>
+            <input type="button" id="select" value="查询">
+            <input type="reset" value="重置">
+        </form>
+        <div id="info2"></div>
+    </div>
+</body>
+</html>

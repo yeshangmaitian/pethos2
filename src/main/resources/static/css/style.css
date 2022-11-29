@@ -1,0 +1,10 @@
+body{
+    text-align: center;
+    position: center;
+}
+#msg{
+    color: red;
+}
+*{
+    background-color: antiquewhite;
+}

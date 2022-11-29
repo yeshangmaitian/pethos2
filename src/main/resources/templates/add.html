@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+</head>
+<body>
+    <div id="urlbtn">
+        <a href="/home"><button>首页</button></a>
+        <a href="/update"><button>更新</button></a>
+        <a href="/select"><button>查询</button></a>
+        <a href="/delete"><button>删除</button></a>
+    </div>
+    <div class="input">
+        <form action="/add1" method="post">
+            *姓名：<input type="text" id="name" name="name"><br>
+            *类型：<input type="text" id="type" name="type"><br>
+            *症状：<input type="text" id="symptom" name="symptom"><br>
+            *就诊结果：<input type="text" id="result" name="result"><br>
+            备注：<input type="text" id="other" name="other"><br>
+            时间：<input type="text" id="date" name="date"><br>
+            <span id="msg" name="msg" style="color: red" th:utext="${SelectResult}">查询结果</span><br>
+    <!--        <h3 th:utext="${SelectResult}">查询结果</h3>-->
+            <input type="submit" value="添加">
+            <input type="reset" value="重置"><br>
+        </form>
+    </div>
+</body>
+</html>
