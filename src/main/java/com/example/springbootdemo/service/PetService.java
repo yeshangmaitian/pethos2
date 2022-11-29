@@ -1,4 +1,6 @@
 package com.example.springbootdemo.service;
+import com.example.springbootdemo.bean.pet;
+import java.util.List;
 
 public interface PetService {
     void add(String name, String other, String type, String symptom, String result, String date);
@@ -7,5 +9,5 @@ public interface PetService {
 
     void update(String name, String other, String type, String symptom, String result);
 
-    void select();
+    List<pet> select();
 }

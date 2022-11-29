@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>删除</title>
@@ -14,8 +14,7 @@
     <form action="/delete1" method="post">
         *姓名：<input type="text" id="name" name="name"><br>
         *类型：<input type="text" id="type" name="type"><br>
-        <span id="msg" style="color: red" th:utext="${SelectResult}">删除结果</span><br>
-        <!--        <h3 th:utext="${SelectResult}">查询结果</h3>-->
+        <span id="msg" th:utext="${msg}"></span><br>
         <input type="submit" id="delete" value="删除">
         <input type="reset" value="重置"><br>
     </form>

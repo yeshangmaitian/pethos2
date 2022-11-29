@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>更新</title>
@@ -13,11 +13,14 @@
   </div>
   <div class="input">
     <form action="update1" method="post">
-      <ul>姓名：<input type="text" name="name"></ul>
-      <ul>类型：<input type="text" name="type"></ul>
-      <ul>症状：<input type="text" name="symptom"></ul>
-      <ul>就医结果：<input type="text" name="result"></ul>
-      <ul>备注：<input type="text" name="other"></ul>
+      <ul>
+        <li>姓名：<input type="text" name="name"></li>
+        <li>类型：<input type="text" name="type"></li>
+        <li>症状：<input type="text" name="symptom"></li>
+        <li>就医结果：<input type="text" name="result"></li>
+        <li>备注：<input type="text" name="other"></li>
+        <li><span id="msg" th:utext="${msg}"></span></li>
+      </ul>
       <input type="submit" value="更新">
       <input type="reset" value="重置">
     </form>

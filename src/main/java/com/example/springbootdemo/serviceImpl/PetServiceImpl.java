@@ -1,10 +1,10 @@
 package com.example.springbootdemo.serviceImpl;
-
+import com.example.springbootdemo.bean.pet;
 import com.example.springbootdemo.mapper.PetMapper;
 import com.example.springbootdemo.service.PetService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class PetServiceImpl implements PetService{
@@ -27,8 +27,8 @@ public class PetServiceImpl implements PetService{
     }
 
     @Override
-    public void select() {
-        petMapper.select();
+    public List<pet> select(){
+        return petMapper.select();
     }
 
 }

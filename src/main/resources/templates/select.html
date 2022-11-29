@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>查询</title>
 </head>
 <body>
     <div id="urlbtn">
@@ -11,16 +11,20 @@
         <a href="/update"><button>更新</button></a>
         <a href="/delete"><button>删除</button></a>
     </div>
-    <div class="select">
-        <button id="selectAll">查询所有信息</button>
-        <div id="info1"></div>
+    <div>
         <form action="/select1" method="post">
-            姓名：<input type="text" id="pname" name="name"><br>
-            宠物类型：<input type="text" id="ptype" name="type"><br>
-            <input type="button" id="select" value="查询">
+<!--            <input type="submit" value="">-->
+            <button type="submit">查询所有信息</button>
+        </form>
+        <div th:utext="${info1}">查询信息</div></br>
+        <form action="/select2" method="post">
+            姓名：<input type="text" id="pname" name="name"></br>
+            宠物类型：<input type="text" id="ptype" name="type"></br>
+            <span th:utext="${msg}"></span></br>
+            <input type="button" value="查询">
             <input type="reset" value="重置">
         </form>
-        <div id="info2"></div>
+        <div th:utext="${info2}">查询信息</div>
     </div>
 </body>
 </html>

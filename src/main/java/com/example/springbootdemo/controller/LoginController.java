@@ -24,14 +24,26 @@ public class LoginController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginMethod(String name,String password,Model model){
+        String msg="登录信息";
+        if(name.isEmpty()||password.isEmpty()){
+            if(name.isEmpty()){
+                msg="姓名不能为空";
+            }
+            else {
+                msg ="密码不能为空";
+            }
+            model.addAttribute("msg",msg);
+            return "loginView";
+        }
         UserBean userBean=userService.login(name,password);
         if (userBean!=null){
+            msg="login successfully";
+            model.addAttribute("msg",msg);
             return "home";
         }
         else {
-            String rs="登录信息";
-            rs="姓名或密码错误";
-            model.addAttribute("rs",rs);
+            msg="姓名或密码错误";
+            model.addAttribute("msg",msg);
             return "loginView";
         }
     }
