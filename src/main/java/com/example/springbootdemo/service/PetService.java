@@ -10,4 +10,10 @@ public interface PetService {
     void update(String name, String other, String type, String symptom, String result);
 
     List<pet> select();
+
+    List<pet> selectType(String type);
+
+    List<pet> selectName(String name);
+
+    List<pet> selectNT(String name, String type);
 }

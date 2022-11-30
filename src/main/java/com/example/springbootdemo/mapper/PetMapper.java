@@ -10,4 +10,8 @@ public interface PetMapper {
     void update(String name, String other, String type, String symptom, String result);
 
     List<pet> select();
+
+    List<pet> selectName(String name);
+    List<pet> selectType(String type);
+    List<pet> selectNT(String name,String type);
 }

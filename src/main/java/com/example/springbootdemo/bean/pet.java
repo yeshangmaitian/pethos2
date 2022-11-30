@@ -3,7 +3,7 @@ package com.example.springbootdemo.bean;
 public class pet {
     String pname;
     String ptype;
-    String symptom;
+    String psymptom;
     String pvresult;
     String pother;
     String pdate;
@@ -24,12 +24,12 @@ public class pet {
         this.ptype = ptype;
     }
 
-    public String getSymptom() {
-        return symptom;
+    public String getPsymptom() {
+        return psymptom;
     }
 
-    public void setSymptom(String symptom) {
-        this.symptom = symptom;
+    public void setPsymptom(String psymptom) {
+        this.psymptom = psymptom;
     }
 
     public String getPvresult() {

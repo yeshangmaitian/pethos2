@@ -1,12 +1,10 @@
-body{
-    text-align: center;
-    position: center;
-    color: antiquewhite;
-
-}
 #msg{
     color: red;
 }
 *{
     background-color: #ffffff;
+    text-align: center;
+    position: center;
+    color: #000000;
+
 }

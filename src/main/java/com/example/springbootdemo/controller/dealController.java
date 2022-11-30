@@ -50,8 +50,6 @@ public class dealController {
                 model.addAttribute("msg",msg);
                 return "add";
             }
-
-
         }
 
         petService.add(name,other,type,symptom,result,date);
@@ -94,34 +92,54 @@ public class dealController {
     }
 
     @RequestMapping(value = "/select1",method = RequestMethod.POST)
-    public String selectMethod(Model model){
+    public String select1Method(Model model){
         List<pet> petList=petService.select();
-//        System.out.println(petList);
         String tableHeaders="<tr><th>宠物姓名</th><th>宠物类型</th><th>宠物症状</th><th>就诊结果</th><th>备注</th><th>就诊时间</th></tr>";
         String petsHTML = "";
         petsHTML += tableHeaders;
-        final String petRow = "<tr><td>pname</td><td>ptype</td><td>symptom</td><td>pvresult</td><td>pother</td><td>pdate</td></tr>";
         Iterator<pet> iterator = petList.iterator();
+        String pHTML;
         while (iterator.hasNext()) {
-//            String thisPetHTML = petRow;
-            String pHTML;
-
             pet a = iterator.next();
-            pHTML="<tr><td>"+a.getPname()+"</td><td>"+a.getPtype()+"</td><td>"+a.getSymptom()+"</td><td>"+a.getPvresult()+"</td><td>"+a.getPother()+"</td><td>"+a.getPdate()+"</td></tr>";
-//            thisPetHTML = thisPetHTML.replace("pname", a.getPname());
-//            thisPetHTML = thisPetHTML.replace("ptype", a.getPtype());
-//            thisPetHTML = thisPetHTML.replace("symptom", a.getSymptom());
-//            thisPetHTML = thisPetHTML.replace("pvresult",a.getPvresult());
-//            thisPetHTML = thisPetHTML.replace("pother",a.getPother());
-//            thisPetHTML = thisPetHTML.replace("pdate",a.getPdate());
+            pHTML="<tr><td>"+a.getPname()+"</td><td>"+a.getPtype()+"</td><td>"+a.getPsymptom()+"</td><td>"+a.getPvresult()+"</td><td>"+a.getPother()+"</td><td>"+a.getPdate()+"</td></tr>";
             petsHTML += pHTML;
-//            petsHTML += thisPetHTML;
-//        }
         }
-
         String msg="查询结果如下";
         model.addAttribute("msg",msg);
+        model.addAttribute("info1","<table id='table'>"+petsHTML+"</table>");
+        return "select";
+    }
 
+    @RequestMapping(value = "/select2",method = RequestMethod.POST)
+    public String select2Method(String name,String type,Model model){
+        String msg;
+        if (name.isEmpty() && type.isEmpty()){
+            msg="宠物姓名和类型不能都为空！";
+            model.addAttribute("msg",msg);
+            return "select";
+        }
+        List<pet> petList;
+        if (name.isEmpty()){
+            petList=petService.selectType(type);
+        } else if (type.isEmpty()) {
+            petList=petService.selectName(name);
+        }else {
+            petList=petService.selectNT(name,type);
+        }
+        String tableHeaders="<tr><th>宠物姓名</th><th>宠物类型</th><th>宠物症状</th><th>就诊结果</th><th>备注</th><th>就诊时间</th></tr>";
+        String petsHTML = "";
+        petsHTML += tableHeaders;
+        Iterator<pet> iterator;
+        iterator = petList.iterator();
+        String pHTML=null;
+        while (iterator.hasNext()) {
+            pet a = iterator.next();
+            pHTML="<tr><td>"+a.getPname()+"</td><td>"+a.getPtype()+"</td><td>"+a.getPsymptom()+"</td><td>"+a.getPvresult()+"</td><td>"+a.getPother()+"</td><td>"+a.getPdate()+"</td></tr>";
+            petsHTML += pHTML;
+//            System.out.println(a.getPname());
+        }
+        msg="查询结果如下";
+        model.addAttribute("msg",msg);
         model.addAttribute("info1","<table id='table'>"+petsHTML+"</table>");
         return "select";
     }

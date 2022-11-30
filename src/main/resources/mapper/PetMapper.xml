@@ -16,4 +16,16 @@
     <select id="select" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
         select * from info;
     </select>
+
+    <select id="selectName" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+        select * from info where pname=#{name};
+    </select>
+
+    <select id="selectType" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+        select * from info where ptype=#{type};
+    </select>
+
+    <select id="selectNT" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+        select * from info where pname=#{name} and ptype=#{type};
+    </select>
 </mapper>

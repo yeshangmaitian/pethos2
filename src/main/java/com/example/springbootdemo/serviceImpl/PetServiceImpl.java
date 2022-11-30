@@ -31,4 +31,18 @@ public class PetServiceImpl implements PetService{
         return petMapper.select();
     }
 
+    @Override
+    public List<pet> selectType(String type) {
+        return petMapper.selectType(type);
+    }
+
+    @Override
+    public List<pet> selectName(String name) {
+        return petMapper.selectName(name);
+    }
+
+    @Override
+    public List<pet> selectNT(String name, String type) {
+        return petMapper.selectNT(name,type);
+    }
 }
