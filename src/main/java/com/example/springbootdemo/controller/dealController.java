@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +25,10 @@ public class dealController {
     @RequestMapping(value = "/add1",method = RequestMethod.POST)
     public String addMethod(String name, String other, String type, String symptom, String result, String date, Model model){
         String msg = null;
+        model.addAttribute("name",name);
+        model.addAttribute("type",type);
+        model.addAttribute("symptom",symptom);
+        model.addAttribute("result",result);
         if (name.isEmpty() || result.isEmpty() || type.isEmpty() || symptom.isEmpty() || date.isEmpty()){
             if (name.isEmpty()) {
                 msg = "姓名不能为空";
@@ -44,14 +50,21 @@ public class dealController {
                 model.addAttribute("msg",msg);
                 return "add";
             }
-            if (date.isEmpty())
-            {
-                msg="时间不能为空";
-                model.addAttribute("msg",msg);
-                return "add";
-            }
         }
-
+        if (other.isEmpty()){
+            other="无";
+        }
+        if (date.isEmpty())
+        {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar calendar = Calendar.getInstance();
+            int year=calendar.get(Calendar.YEAR);
+            int month=calendar.get(Calendar.MONTH) + 1;
+            int day=calendar.get(Calendar.DATE);
+            date = year +"-"+ "-"+month +"-"+day;
+        }
+        model.addAttribute("other",other);
+        model.addAttribute("date",date);
         petService.add(name,other,type,symptom,result,date);
         msg="添加成功";
         model.addAttribute("msg",msg);
@@ -65,8 +78,22 @@ public class dealController {
 
     @RequestMapping(value = "/delete1",method = RequestMethod.POST)
     public String deleteMethod(String name,String type,Model model){
+        String msg;
+        model.addAttribute("name", name);
+        model.addAttribute("type", type);
+        if (name.isEmpty() || type.isEmpty()) {
+            if (name.isEmpty()) {
+                msg = "姓名不能为空";
+                model.addAttribute("msg", msg);
+                return "add";
+            }
+            if (type.isEmpty()) {
+                msg = "类型不能为空";
+                model.addAttribute("msg", msg);
+                return "add";
+            }
+        }
         petService.delete(name,type);
-        String msg=null;
         msg="删除成功";
         model.addAttribute("msg",msg);
         return "delete";
@@ -79,8 +106,38 @@ public class dealController {
 
     @RequestMapping(value = "/update1",method = RequestMethod.POST)
     public String updateMethod(String name,String other,String type,String symptom,String result,Model model){
-        petService.update(name,other,type,symptom,result);
         String msg=null;
+        model.addAttribute("name",name);
+        model.addAttribute("type",type);
+        model.addAttribute("symptom",symptom);
+        model.addAttribute("result",result);
+        if (name.isEmpty() || result.isEmpty() || type.isEmpty() || symptom.isEmpty() ){
+            if (name.isEmpty()) {
+                msg = "姓名不能为空";
+                model.addAttribute("msg",msg);
+                return "add";
+            }
+            if (type.isEmpty()) {
+                msg = "类型不能为空";
+                model.addAttribute("msg",msg);
+                return "add";
+            }
+            if (result.isEmpty()) {
+                msg = "就诊结果不能为空";
+                model.addAttribute("msg",msg);
+                return "add";
+            }
+            if (symptom.isEmpty()) {
+                msg = "症状不能为空";
+                model.addAttribute("msg",msg);
+                return "add";
+            }
+        }
+        if (other.isEmpty()){
+            other="无";
+        }
+        model.addAttribute("other",other);
+        petService.update(name,other,type,symptom,result);
         msg="更新成功";
         model.addAttribute("msg",msg);
         return "update";
@@ -105,14 +162,16 @@ public class dealController {
             petsHTML += pHTML;
         }
         String msg="查询结果如下";
-        model.addAttribute("msg",msg);
-        model.addAttribute("info1","<table id='table'>"+petsHTML+"</table>");
+        model.addAttribute("rs",msg);
+        model.addAttribute("info1","<table border=\"1\" cellspacing=\"0\" id='table'>"+petsHTML+"</table>");
         return "select";
     }
 
     @RequestMapping(value = "/select2",method = RequestMethod.POST)
     public String select2Method(String name,String type,Model model){
         String msg;
+        model.addAttribute("name",name);
+        model.addAttribute("type",type);
         if (name.isEmpty() && type.isEmpty()){
             msg="宠物姓名和类型不能都为空！";
             model.addAttribute("msg",msg);
@@ -136,11 +195,10 @@ public class dealController {
             pet a = iterator.next();
             pHTML="<tr><td>"+a.getPname()+"</td><td>"+a.getPtype()+"</td><td>"+a.getPsymptom()+"</td><td>"+a.getPvresult()+"</td><td>"+a.getPother()+"</td><td>"+a.getPdate()+"</td></tr>";
             petsHTML += pHTML;
-//            System.out.println(a.getPname());
         }
         msg="查询结果如下";
-        model.addAttribute("msg",msg);
-        model.addAttribute("info1","<table id='table'>"+petsHTML+"</table>");
+        model.addAttribute("rs",msg);
+        model.addAttribute("info2","<table border=\"1\" cellspacing=\"0\" id='table'>"+petsHTML+"</table>");
         return "select";
     }
 }

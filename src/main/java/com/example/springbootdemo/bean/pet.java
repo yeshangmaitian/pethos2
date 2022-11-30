@@ -1,12 +1,12 @@
 package com.example.springbootdemo.bean;
 
 public class pet {
-    String pname;
-    String ptype;
-    String psymptom;
-    String pvresult;
-    String pother;
-    String pdate;
+    private String pname;
+    private String ptype;
+    private String psymptom;
+    private String pvresult;
+    private String pother;
+    private String pdate;
 
     public String getPname() {
         return pname;

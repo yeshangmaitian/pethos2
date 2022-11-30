@@ -3,20 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>删除</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css"/>
 </head>
 <body>
-    <div id="urlbtn">
-        <a href="/home"><button>首页</button></a>
-        <a href="/update"><button>更新</button></a>
-        <a href="/select"><button>查询</button></a>
-        <a href="/add"><button>添加</button></a>
+    <div id="header">
+        <h1>小希宠物医院</h1>
     </div>
-    <form action="/delete1" method="post">
-        *姓名：<input type="text" id="name" name="name"><br>
-        *类型：<input type="text" id="type" name="type"><br>
-        <span id="msg" th:utext="${msg}"></span><br>
-        <input type="submit" id="delete" value="删除">
-        <input type="reset" value="重置"><br>
-    </form>
+    <div id="main">
+        <div class="option">
+            <ul class="list">
+                <li>请选择要进行的操作</li>
+                <li><a href="/home">首页</a></li>
+                <li><a href="/select">查询</a></li>
+                <li><a href="/add">添加</a></li>
+                <li><a href="/update">修改</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <p>开始删除宠物</p>
+            <form action="/delete1" method="post">
+                *姓名：<input type="text" id="name" name="name" th:value="${name}"><br>
+                *类型：<input type="text" id="type" name="type" th:value="${type}"><br>
+                <span id="msg" th:utext="${msg}"></span><br>
+                <input type="submit" id="delete" value="删除">
+                <input type="reset" value="重置"><br>
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <div>Copyright (C)小希宠物医院 2016-2018,All Rights Reserved|京ICP证000001号音像制品经营许可证</div>
+        <address>通讯地址:中关村南大街27号中央民族大学 读者服务部&nbsp;&nbsp;电话:(010)
+            62781733&nbsp;&nbsp;网管信箱:netac dmin@tup.tsinghua.edu.cn</address>
+    </div>
 </body>
 </html>

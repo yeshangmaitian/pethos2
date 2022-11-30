@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>selectUser</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css"/>
+</head>
+<body>
+    <div id="header">
+        <h1>小希宠物医院</h1>
+    </div>
+    <div id="main">
+        <div class="option">
+            <ul class="list">
+                <li>请选择要进行的操作</li>
+                <li><a href="/home">首页</a></li>
+                <li><a href="/select">查询</a></li>
+                <li><a href="/add">添加</a></li>
+                <li><a href="/delete">删除</a></li>
+                <li><a href="/update">修改</a></li>
+                <li><a href="/addUser">管理员添加</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <form action="/selectU" method="post">
+                <button type="submit">查询所有管理员信息</button>
+            </form>
+            <span th:utext="${msg}"></span></br>
+            <span th:utext="${rs}"></span></br>
+        </div>
+    </div>
+    <div id="footer">
+        <div>Copyright (C)小希宠物医院 2016-2018,All Rights Reserved|京ICP证000001号音像制品经营许可证</div>
+        <address>通讯地址:中关村南大街27号中央民族大学 读者服务部&nbsp;&nbsp;电话:(010)62781733&nbsp;&nbsp;网管信箱:netac dmin@tup.tsinghua.edu.cn</address>
+    </div>
+</body>
+</html>

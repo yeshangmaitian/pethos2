@@ -3,28 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>查询</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css"/>
 </head>
 <body>
-    <div id="urlbtn">
-        <a href="/home"><button>首页</button></a>
-        <a href="/add"><button>添加</button></a>
-        <a href="/update"><button>更新</button></a>
-        <a href="/delete"><button>删除</button></a>
+    <div id="header">
+        <h1>小希宠物医院</h1>
     </div>
-    <div>
-        <form action="/select1" method="post">
-<!--            <input type="submit" value="">-->
-            <button type="submit">查询所有信息</button>
-        </form>
-        <form action="/select2" method="post">
-            姓名：<input type="text" id="pname" name="name"></br>
-            宠物类型：<input type="text" id="ptype" name="type"></br>
-            <span id="msg" th:utext="${msg}"></span></br>
-            <input type="submit" value="查询">
-            <input type="reset" value="重置">
-        </form>
-        <div th:utext="${info1}">查询信息</div></br>
-        <div th:utext="${info2}">查询信息</div></br>
+    <div id="main">
+        <div class="option">
+            <ul class="list">
+                <li>请选择要进行的操作</li>
+                <li><a href="/home">首页</a></li>
+                <li><a href="/add">添加</a></li>
+                <li><a href="/delete">删除</a></li>
+                <li><a href="/update">修改</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <form action="/select1" method="post">
+                <button type="submit">查询所有宠物信息</button>
+            </form>
+            <form action="/select2" method="post">
+                姓名：<input type="text" id="pname" name="name" th:value="${name}"></br>
+                宠物类型：<input type="text" id="ptype" name="type"  th:value="${type}"></br>
+                <span id="msg" th:utext="${msg}"></span></br>
+                <input type="submit" value="查询">
+                <input type="reset" value="重置">
+            </form>
+            <span th:utext="${rs}"></span></br>
+            <div th:utext="${info1}">查询信息</div></br>
+            <div th:utext="${info2}">查询信息</div></br>
+        </div>
+    </div>
+    <div id="footer">
+        <div>Copyright (C)小希宠物医院 2016-2018,All Rights Reserved|京ICP证000001号音像制品经营许可证</div>
+        <address>通讯地址:中关村南大街27号中央民族大学 读者服务部&nbsp;&nbsp;电话:(010)
+            62781733&nbsp;&nbsp;网管信箱:netac dmin@tup.tsinghua.edu.cn</address>
     </div>
 </body>
 </html>

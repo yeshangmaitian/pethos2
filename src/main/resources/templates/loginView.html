@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css"/>
 </head>
 <body>
-  <form action="/login" method="post" role="form">
-    user: <input type="text" id="naem" name="name"></br>
-    password: <input type="password" id="password" name="password"></br>
-    <span th:utext="${msg}" id="msg"></span></br>
-    <input type="submit" id="login" value="login">
-    <input type="reset" value="重置">
-  </form>
+    <div id="header">
+        <h1>小希宠物医院</h1>
+    </div>
+    <form action="/login" method="post" role="form">
+        user: <input type="text" id="naem" name="name" th:value="${uname}"></br>
+        password: <input type="password" id="password" name="password" th:value="${upwd}"></br>
+        <span th:utext="${msg}" id="msg"></span></br>
+        <input type="submit" id="login" value="login">
+        <input type="reset" value="重置">
+    </form>
 </body>
 </html>

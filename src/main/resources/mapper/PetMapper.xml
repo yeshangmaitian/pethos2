@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootdemo.mapper.PetMapper">
-    <insert id="add" parameterType="String">
+    <insert id="add">
         insert into info(pname,pother,ptype,psymptom,pvresult,pdate) values(#{name},#{other},#{type},#{symptom}, #{result}, #{date})
     </insert>
 
-    <delete id="delete" parameterType="String">
+    <delete id="delete">
         delete from info where pname=#{name} and ptype=#{type};
     </delete>
 
-    <update id="update" parameterType="String">
+    <update id="update">
         update info set pvresult=#{result},psymptom=#{symptom},pother=#{other} where pname=#{name} and ptype=#{type};
     </update>
 
-    <select id="select" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+    <select id="select" resultType="com.example.springbootdemo.bean.pet">
         select * from info;
     </select>
 
-    <select id="selectName" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+    <select id="selectName" resultType="com.example.springbootdemo.bean.pet">
         select * from info where pname=#{name};
     </select>
 
-    <select id="selectType" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+    <select id="selectType" resultType="com.example.springbootdemo.bean.pet">
         select * from info where ptype=#{type};
     </select>
 
-    <select id="selectNT" parameterType="String" resultType="com.example.springbootdemo.bean.pet">
+    <select id="selectNT" resultType="com.example.springbootdemo.bean.pet">
         select * from info where pname=#{name} and ptype=#{type};
     </select>
 </mapper>

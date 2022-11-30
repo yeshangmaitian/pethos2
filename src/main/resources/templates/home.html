@@ -3,17 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>主页面</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/static/css/style.css}" type="text/css"/>
 </head>
 <body>
 <!--    <h1>login successfully</h1>-->
-    <h3 th:utext="${msg}">login successfully</h3>
-    <h1>欢迎来到宠物医院</h1>
-    <div id="act">
-        <h3>请选择要进行的操作</h3>
-        <a href="/add"><button>添加</button></a>
-        <a href="/select"><button>查询</button></a>
-        <a href="/update"><button>修改</button></a>
-        <a href="/delete"><button>删除</button></a>
+    <h3 th:utext="${msg}"></h3>
+    <div id="header">
+        <h1>小希宠物医院</h1>
+    </div>
+    <div id="main">
+        <div class="option">
+            <ul class="list">
+                <li>请选择要进行的操作</li>
+                <li><a href="/select">查询</a></li>
+                <li><a href="/add">添加</a></li>
+                <li><a href="/delete">删除</a></li>
+                <li><a href="/update">修改</a></li>
+                <li><a href="/selectUser">管理员查询</a></li>
+                <li><a href="/addUser">管理员添加</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <p>宠物医院成立于1920年，已有百年历史。多年来高效行医，等到了广大群众的好评。
+                为使广大患者在医院就诊能够享受到著名三甲医院的医疗技术水平和服务，
+                自2018年3月15日开始，医院专家在医院定期出诊，承担医院外聘专家门诊工作。</p>
+            <p>中心本着“早发现、早诊断、早评估、早预防、早治疗、早康复”的指导思想，并将其贯彻于“把握中间，
+                抓住两头”的工作程序中。“把握中间”要求对每个人的体检本身要要做到全面、客观，达到临床医学层面的高质量、高水平。
+                “抓住两头”要求根据体检分析、结果，对每一个人个体、每一人群的团体提出预防和保健的指导督导方案，
+                对发现的疾病提出科学的指导以及适宜的诊断治疗和康复方案。
+                “防患于未然，消疾于无形，康复于欢乐，让健康常相伴，让生命更灿烂”是本中心工作的座右铭。</p>
+        </div>
+    </div>
+    <div id="footer">
+        <div>Copyright (C)小希宠物医院 2016-2018,All Rights Reserved|京ICP证000001号音像制品经营许可证</div>
+        <address>通讯地址:中关村南大街27号中央民族大学 读者服务部&nbsp;&nbsp;电话:(010)
+            62781733&nbsp;&nbsp;网管信箱:netac dmin@tup.tsinghua.edu.cn</address>
     </div>
 </body>
 </html>
